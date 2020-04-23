@@ -10,6 +10,7 @@
     ```
 
 - Create AWS Cloudformation stack
+    
     Network Infrastructure
     ```
     ./create.sh my-network network.yml network-params.json 
