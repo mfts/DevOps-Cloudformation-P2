@@ -40,10 +40,11 @@ Bonus points if you add `http://` in front of the load balancer **DNS Name** in 
 
 - Create AWS Cloudformation stack
     ```
-    ./create.sh project project.yml project-params.json 
+    ./create.sh <stack-name>-infra infratructure.yml infrastructure-params.json 
+    ./create.sh <stack-name>-servers servers.yml servers-params.json 
     ```
 
 - Updating AWS Cloudformation stack
     ```
-    ./update.sh project project.yml project-params.json 
+    ./update.sh <stack-name> <config-file>.yml <params-file>.json 
     ```
