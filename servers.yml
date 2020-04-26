@@ -98,11 +98,13 @@ Resources:
         Fn::Base64: !Sub |
           #!/bin/bash
           apt-get update -y
+          apt-get install awscli -y
           apt-get install apache2 -y
           systemctl start apache2.service
           cd /var/www/html
-          echo "It works! Udagram, Udacity" > index.html
+          aws s3 cp s3://udacity-iac/index.html .
       ImageId: ami-003634241a8fcdec0
+      IamInstanceProfile: !Ref ProfileWithRolesForOurApp
       SecurityGroups:
       - Ref: WebServerSecGroup
       InstanceType: t2.micro
