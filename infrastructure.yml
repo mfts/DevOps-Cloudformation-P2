@@ -1,3 +1,15 @@
+Description: >
+  mfts
+  Deploy High Availability Web App
+  VPC Template
+  Requirements
+    - VPC
+    - 2 AZ
+    - 2 Public subnets
+    - 2 Private subnets
+    - 2 NAT gateways
+    - Internet gateway and attachment
+
 Parameters:
   EnvironmentName:
     Description: An environment name that will be prefixed to resource names
