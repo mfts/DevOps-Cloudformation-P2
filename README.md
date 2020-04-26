@@ -28,6 +28,10 @@ One of the output exports of the **CloudFormation** script should be the public 
 
 Bonus points if you add `http://` in front of the load balancer **DNS Name** in the output, for convenience.
 
+## Requirements
+
+- AWS S3 bucket with an `index.html` file
+- Replace `servers.yml#line 105` with the correct S3 bucket name
 
 ## Installation
 
@@ -40,8 +44,8 @@ Bonus points if you add `http://` in front of the load balancer **DNS Name** in 
 
 - Create AWS Cloudformation stack
     ```
-    ./create.sh <stack-name>-infra infratructure.yml infrastructure-params.json 
-    ./create.sh <stack-name>-servers servers.yml servers-params.json 
+    ./create.sh <stack-name-infra> infratructure.yml infrastructure-params.json 
+    ./create.sh <stack-name-servers> servers.yml servers-params.json 
     ```
 
 - Updating AWS Cloudformation stack
