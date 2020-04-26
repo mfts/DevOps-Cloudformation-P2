@@ -190,3 +190,14 @@ Resources:
       - Key: Name
         Value: !Sub ${EnvironmentName}-BASTION-SG
 
+Outputs: 
+  # This is also optional.
+  # Bonus points for useful outputs!
+  # for example, if you create a Load Balancer
+  # it's nice to output the URL to it here, so that we don't have to go to the console to get it.
+  LoadBalancer:
+    Description: DNS for the LB
+    Value: 
+      Fn::GetAtt: WebAppLB.DNSName
+    Export:
+      Name: !Sub "${EnvironmentName}-WEBAPP-LB"
