@@ -163,3 +163,37 @@ Resources:
       VpcId: 
         Fn::ImportValue:
           Fn::Sub: "${EnvironmentName}-VPCID"
+  Bastion:
+    Type: AWS::EC2::Instance
+    Properties:
+      BlockDeviceMappings:
+        - DeviceName: "/dev/sdk"
+          Ebs:
+            VolumeSize: '10'
+      Tags:
+        - Key: Name
+          Value: !Sub ${EnvironmentName}-BASTION
+      ImageId: ami-003634241a8fcdec0
+      InstanceType: t2.micro
+      SubnetId:
+        Fn::ImportValue: !Sub "${EnvironmentName}-PUB1-SN"
+      AvailabilityZone: !Select [ 0, !GetAZs '' ]
+      SecurityGroupIds:
+      - Ref: BastionSecurityGroup
+
+  BastionSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      VpcId:
+        Fn::ImportValue:
+          !Sub "${EnvironmentName}-VPCID"
+      GroupDescription: Bastion Security Group
+      SecurityGroupIngress:
+        - CidrIp: 0.0.0.0/0
+          IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+      Tags:
+      - Key: Name
+        Value: !Sub ${EnvironmentName}-BASTION-SG
+
