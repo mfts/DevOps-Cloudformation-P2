@@ -201,3 +201,9 @@ Outputs:
       Fn::GetAtt: WebAppLB.DNSName
     Export:
       Name: !Sub "${EnvironmentName}-WEBAPP-LB"
+
+  BastionHost:
+    Description: Bastion Host
+    Value: !Ref Bastion
+    Export:
+      Name: !Sub "${EnvironmentName}-BASTION"
